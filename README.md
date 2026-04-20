@@ -30,8 +30,8 @@ docker compose -f docker/docker-compose.monitoring.yml down
 
 | | 로컬 | EC2 서버 |
 |--|------|---------|
-| **Prometheus** | http://localhost:9090 | http://43.200.2.37:9090 |
-| **Grafana** | http://localhost:3000 | http://43.200.2.37:3000 |
+| **Prometheus** | http://localhost:9090 | http://<EC2_PUBLIC_IP>:9090 |
+| **Grafana** | http://localhost:3000 | http://<EC2_PUBLIC_IP>:3000 |
 
 ### Grafana 계정 설정
 
