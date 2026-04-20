@@ -28,8 +28,10 @@ docker compose -f docker/docker-compose.monitoring.yml down
 
 ### 접속
 
-- **Prometheus**: http://localhost:9090
-- **Grafana**: http://localhost:3000
+| | 로컬 | EC2 서버 |
+|--|------|---------|
+| **Prometheus** | http://localhost:9090 | http://43.200.2.37:9090 |
+| **Grafana** | http://localhost:3000 | http://43.200.2.37:3000 |
 
 ### Grafana 계정 설정
 
@@ -45,10 +47,10 @@ docker compose -f docker/docker-compose.monitoring.yml up -d
 
 `prometheus/prometheus.yml`에서 스크랩 대상을 설정합니다.
 
-| Job | 엔드포인트 | 설명 |
-|-----|-----------|------|
-| `node-exporter` | `172.31.9.253:9100/metrics` | 호스트 시스템 메트릭 |
-| `spring-actuator` | `172.31.9.253:8080/actuator/prometheus` | Spring Boot 애플리케이션 메트릭 |
+| Job | 엔드포인트 | 설명 | Grafana 대시보드 |
+|-----|-----------|------|----------------|
+| `node-exporter` | `172.31.9.253:9100/metrics` | 호스트 시스템 메트릭 | [Node Exporter Full (ID: 1860)](https://grafana.com/grafana/dashboards/1860) |
+| `spring-actuator` | `172.31.9.253:8080/actuator/prometheus` | Spring Boot 애플리케이션 메트릭 | [Spring Boot Statistics (ID: 19004)](https://grafana.com/grafana/dashboards/19004) |
 
 > 대상 IP(`172.31.9.253`)는 AWS EC2 프라이빗 IP입니다. Docker가 실행되는 환경에서 해당 IP에 접근 가능해야 합니다.
 
